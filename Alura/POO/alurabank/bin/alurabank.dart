@@ -2,20 +2,20 @@
 
 void main() {
   ContaCorrente conta = ContaCorrente("Bruninho", 1234, 111, 500);
-  //ContaCorrente conta2 = ContaCorrente("Bruninho", 1234, 111, 500);
+  ContaCorrente conta2 = ContaCorrente("Bruninho", 1234, 111, 500);
 
   print("Titular: ${conta.titular}");
   print("Agencia: ${conta.agencia}");
   print("Conta: ${conta.conta}");
   print("Saldo: ${conta.saldo}");
 
-  conta.deposito(500);
+  print(conta.saldo);
+  print(conta2.saldo);
 
-  if (conta.saque(500)) {
-    print("Saque efetuado, novo saldo ${conta.saldo}");
-  } else {
-    print("Num deu");
-  }
+  conta.transferencia(2500, conta2);
+
+  print(conta.saldo);
+  print(conta2.saldo);
 }
 
 class ContaCorrente {
@@ -25,6 +25,16 @@ class ContaCorrente {
   double saldo = 0;
 
   ContaCorrente(this.titular, this.agencia, this.conta, this.saldo);
+
+  bool transferencia(double valorTransferencia, ContaCorrente contaDestino) {
+    if (this.saldo >= valorTransferencia) {
+      this.saldo -= valorTransferencia;
+      contaDestino.deposito(valorTransferencia);
+      return true;
+    }
+
+    return false;
+  }
 
   bool saque(double valorSaque) {
     if (this.saldo >= valorSaque) {
