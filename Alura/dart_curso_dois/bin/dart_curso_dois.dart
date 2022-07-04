@@ -1,10 +1,18 @@
 void main(List<String> arguments) {
   Fruta fruta = Fruta("Laranja", 0.50, "laranja", "doce", 10);
 
-  print(fruta.__isMadura);
+  List<Fruta> frutas = [];
+
+  frutas.add(Fruta("Laranja", 0.50, "laranja", "doce", 10));
+
+  for (var e in frutas) {
+    print(e.nome);
+  }
+
+  print(frutas);
 }
 
-class Alimento {
+abstract class Alimento {
   String nome;
   double peso;
   String cor;
@@ -19,11 +27,11 @@ class Legumes extends Alimento {
       : super(nome, cor, peso);
 }
 
-
 class Fruta extends Alimento {
   int diasDesdeColheita;
   bool? __isMadura;
 
-  Fruta(String nome, double peso, String cor, String tipo, this.diasDesdeColheita)
+  Fruta(
+      String nome, double peso, String cor, String tipo, this.diasDesdeColheita)
       : super(nome, cor, peso);
 }
