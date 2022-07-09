@@ -1,4 +1,4 @@
-import 'package:curso_1_alura/task.dart';
+import 'package:curso_1_alura/components/task.dart';
 import 'package:flutter/material.dart';
 
 class InitialScreen extends StatefulWidget {

@@ -1,4 +1,4 @@
-import 'package:curso_1_alura/initial_screen.dart';
+import 'package:curso_1_alura/screens/initial_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
