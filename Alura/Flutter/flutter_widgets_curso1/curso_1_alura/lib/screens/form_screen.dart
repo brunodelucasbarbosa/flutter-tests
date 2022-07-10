@@ -1,9 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:curso_1_alura/data/task_inheirited.dart';
 import 'package:flutter/material.dart';
 
 class FormScreen extends StatefulWidget {
-  const FormScreen({Key? key}) : super(key: key);
+  const FormScreen({Key? key, required this.taskContext}) : super(key: key);
+
+  final BuildContext taskContext;
 
   @override
   State<FormScreen> createState() => _FormScreenState();
@@ -125,7 +128,12 @@ class _FormScreenState extends State<FormScreen> {
                       )),
                   ElevatedButton(
                     onPressed: () {
-                      if ((_formKey.currentState!.validate())) {
+                      if (_formKey.currentState!.validate()) {
+                        TaskInherited.of(widget.taskContext)?.newTask(
+                          _nameController.text,
+                          _imageController.text,
+                          int.parse(_difficultyController.text),
+                        );
                         ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text("Tarefa criada!")));
                         _imageController.text = '';

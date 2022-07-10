@@ -1,4 +1,5 @@
 import 'package:curso_1_alura/components/task.dart';
+import 'package:curso_1_alura/data/task_inheirited.dart';
 import 'package:curso_1_alura/screens/form_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -16,14 +17,12 @@ class _InitialScreenState extends State<InitialScreen> {
     return Scaffold(
       appBar: AppBar(title: const Text("Meu Header")),
       body: ListView(
-        children: const [
-          
-        ],
+        children: TaskInherited.of(context)!.taskList,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => FormScreen()));
+              context, MaterialPageRoute(builder: (newContext) => FormScreen(taskContext: context)));
         },
         child: const Icon(Icons.arrow_forward_ios),
       ),
