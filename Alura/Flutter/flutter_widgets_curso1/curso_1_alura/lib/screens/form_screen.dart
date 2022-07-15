@@ -136,9 +136,6 @@ class _FormScreenState extends State<FormScreen> {
                         );
                         ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text("Tarefa criada!")));
-                        _imageController.text = '';
-                        _nameController.text = '';
-                        _difficultyController.text = '';
                         Navigator.pop(context);
                       }
                     },
